@@ -20,15 +20,23 @@ class PigLatinizer
         # first_letter = word[0].downcase
         # rules of piglatin - if it starts with noun, just add 'way'
         # user input needs to be turned into a string
-
-        if vowel.include?(word[0].downcase)
+        # puts "===================================================="
+        # puts word.inspect
+        if vowel.include?(word[0])
             (word + 'way').to_s
-        elsif consonant.include?(word[0].downcase)
-            (word[1..-1] + word[0] + 'ay').to_s
-        elsif consonant.include?(word[0].downcase) && consonant.include?(word[1].downcase)
-            (word[2..-1] + word[0..1] + 'ay').to_s
-        else consonant.include?(word[0].downcase) && consonant.include?(word[1].downcase) && consonant.include?(word[2].downcase)
-            (word[3..-1] + word[0..3] + 'ay').to_s
+        elsif vowel.include?(word[0].upcase)
+            (word + 'way').to_s
+        else consonant.include?(word[0])
+            if consonant.include?(word[0]) && consonant.include?(word[1]) && consonant.include?(word[2])
+                (word[3..-1] + word[0..2] + 'ay').to_s
+            elsif consonant.include?(word[0]) && consonant.include?(word[1])
+                (word[2..-1] + word[0..1] + 'ay').to_s
+            elsif 
+                consonant.include?(word[0])
+                (word[1..-1] + word[0] + 'ay').to_s
+            else
+                (word + 'way').to_s
+            end
 
         end
     end
