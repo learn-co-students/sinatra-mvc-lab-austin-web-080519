@@ -7,6 +7,8 @@ require 'capybara/dsl'
 RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Rack::Test::Methods
+  config.filter_run_including :focus => true
+  config.run_all_when_everything_filtered = true
   config.order = 'default'
 end
 
